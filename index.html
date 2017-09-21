@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>Psychic</title>
+</head>
+<body>
+
+<style type="text/css">
+  
+    body{
+
+      /*background-image: url("https://media.giphy.com/media/3og0IROkdNyWyCG2I0/giphy.gif");*/
+      background-image: url("https://media.giphy.com/media/l3q2vZRhaKujVZXu8/giphy.gif");    
+      background-repeat: repeat-y repeat-x;
+    }
+
+    h1{
+      font-size: 80px;
+      color: green;
+      text-align: center;
+    }
+
+    p{
+      font-size: 30px;
+      color: blue;
+      text-align: center;
+    }
+
+</style>
+
+
+  <h1>Psychic Game</h1>
+  <div id="game">
+    <p>I'm thinking of a letter: Can you guess it?</p>
+  </div>
+
+
+
+
+  <script type="text/javascript">
+
+   
+    var compChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+    var wins = 0;
+    var losses = 0;
+    var livesLeft = 9;
+    var incorrect = [""];
+    // Keypress
+    document.onkeyup = function(event) {
+
+      var userGuess = event.key;
+      var computerGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
+      if (userGuess === computerGuess) {
+          wins++;
+        } 
+        else 
+        {
+          livesLeft--;
+          incorrect.push(userGuess);
+        }
+      //lose
+        if (livesLeft <= 0) {
+        alert("you lose!!")
+        losses++;
+        }
+       
+        var psychicGame =
+          "<p>" + "Wins: " + wins + "</p>" + 
+          "<p>" + "Losses: " + losses + "</p>" +
+          "<p>" + "Guesses Left: " + livesLeft + 
+          "<p>" + "Your Guesses so far: " + incorrect;
+        // Write 2 Document
+        document.querySelector("#game").innerHTML = psychicGame;
+      }
+
+      
+
+  </script>
+</body>
+</html>
